@@ -9,6 +9,26 @@ class Vault extends Model
 {
     use HasFactory;
 
+   /**
+     * Get the value indicating whether the IDs are incrementing.
+     *
+     * @return bool
+     */
+    public function getIncrementing()
+    {
+        return false;
+    }
+
+   /**
+     * Get the auto-incrementing key type.
+     *
+     * @return string
+     */
+    public function getKeyType()
+    {
+        return 'string';
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -26,7 +46,7 @@ class Vault extends Model
         parent::boot();
 
         static::creating(function ($model) {
-            $model->uuid = Uuid::generate()->string;
+            $model->id = Uuid::generate()->string;
         });
     }
 

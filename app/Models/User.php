@@ -55,4 +55,18 @@ class User extends Authenticatable
             $model->uuid = Uuid::generate()->string;
         });
     }
+
+    /**
+     * Returns the user UUID.
+     */
+    public function getUuid(): string {
+        return $this->uuid;
+    }
+
+    /**
+     * Returns the user ID.
+     */
+    public function getId(): string {
+        return $this->id;
+    }
 }
