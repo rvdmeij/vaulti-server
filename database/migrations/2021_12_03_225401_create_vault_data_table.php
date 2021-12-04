@@ -15,6 +15,7 @@ class CreateVaultDataTable extends Migration
     {
         Schema::create('vault_data', function (Blueprint $table) {
             $table->uuid('id')->primary();
+            $table->uuid('vault_id')->nullable();
             $table->binary('data')->nullable();
             $table->timestamps();
         });

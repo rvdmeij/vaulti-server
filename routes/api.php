@@ -24,3 +24,6 @@ Route::post('/login', [ApiAuthController::class, 'login']);
 
 Route::middleware('auth:sanctum')
     ->get('vaults', 'App\Http\Controllers\VaultController@index');
+
+Route::middleware('auth:sanctum')
+    ->get('vaults/{uuid}', 'App\Http\Controllers\VaultController@show');

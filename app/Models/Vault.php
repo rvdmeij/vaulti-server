@@ -4,30 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UuidModelTrait;
 
 class Vault extends Model
 {
-    use HasFactory;
-
-   /**
-     * Get the value indicating whether the IDs are incrementing.
-     *
-     * @return bool
-     */
-    public function getIncrementing()
-    {
-        return false;
-    }
-
-   /**
-     * Get the auto-incrementing key type.
-     *
-     * @return string
-     */
-    public function getKeyType()
-    {
-        return 'string';
-    }
+    use HasFactory, UuidModelTrait;
 
     /**
      * The attributes that are mass assignable.
@@ -44,18 +25,6 @@ class Vault extends Model
     protected $visible = [
         'id', 'hash', 'name', 'data_id', 'created_at', 'updated_at'
     ];
-
-    /**
-     * Set UUID upon vault creation.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->id = Uuid::generate()->string;
-        });
-    }
 
     /**
      * Relation with User.

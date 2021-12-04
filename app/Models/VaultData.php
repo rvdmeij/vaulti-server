@@ -4,22 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\UuidModelTrait;
 
 class VaultData extends Model
 {
-    use HasFactory;
-
-    /**
-     * Set UUID upon VaultData creation.
-     */
-    protected static function boot()
-    {
-        parent::boot();
-
-        static::creating(function ($model) {
-            $model->uuid = Uuid::generate()->string;
-        });
-    }
+    use HasFactory, UuidModelTrait;
 
     /**
      * Relation with Vault.

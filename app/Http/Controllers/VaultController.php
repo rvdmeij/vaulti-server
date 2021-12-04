@@ -5,18 +5,35 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Vault;
+use App\Models\VaultData;
 
 class VaultController extends Controller
 {
+    /**
+     * Return all vaults of the authenticated user.
+     */
     public function index(Request $request)
     {
-        return Vault::where('user_id', Auth::user()->getId())
-        ->get();
+        return Vault::where('user_id', Auth::user()->getId())->get();
     }
  
-    public function show($id)
+    /**
+     * Retrieve vault details by VaultData UUID.
+     */
+    public function show($uuid)
     {
-        return Vault::find($id);
+        $data = VaultData::find($uuid);
+        $data_user_id = $data->vault()
+            ->first()
+            ->user()
+            ->first()
+            ->getId();
+
+        if ($data_user_id !== Auth::user()->getId()) {
+            return response()->json(['error' => 'Not authorized.'],403);
+        }
+
+        return $data;
     }
 
     public function store(Request $request)

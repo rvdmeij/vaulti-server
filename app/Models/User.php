@@ -69,4 +69,8 @@ class User extends Authenticatable
     public function getId(): string {
         return $this->id;
     }
+
+    public function vault() {
+        return $this->hasMany(Vault::class);
+    }
 }
