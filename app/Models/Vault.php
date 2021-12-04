@@ -38,6 +38,9 @@ class Vault extends Model
         'name', 'hash'
     ];
 
+    /**
+     * Visible fields.
+     */
     protected $visible = [
         'id', 'hash', 'name', 'data_id', 'created_at', 'updated_at'
     ];
