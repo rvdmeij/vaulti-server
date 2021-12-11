@@ -16,7 +16,7 @@
 
                     {{ __('You are logged in!') }} <br/>
                     {{ __('Your UUID is: ') }}
-                    <strong>{{ Auth::user()->uuid }}</strong>
+                    <strong>{{ Auth::user()->getUuid() }}</strong>
                 </div>
             </div>
         </div>
