@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Models;
+namespace App\Traits;
+
+use Webpatser\Uuid\Uuid;
 
 trait UuidModelTrait
 {
@@ -32,7 +34,7 @@ trait UuidModelTrait
         parent::boot();
 
         static::creating(function ($model) {
-            $model->uuid = Uuid::generate()->string;
+            $model->id = Uuid::generate()->string;
         });
     }
 }

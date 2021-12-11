@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\UuidModelTrait;
+use App\Traits\UuidModelTrait;
 
 class Vault extends Model
 {
@@ -16,14 +16,14 @@ class Vault extends Model
      * @var string[]
      */
     protected $fillable = [
-        'name', 'hash'
+        'name', 'hash', 'user_id'
     ];
 
     /**
      * Visible fields.
      */
     protected $visible = [
-        'id', 'hash', 'name', 'data_id', 'created_at', 'updated_at'
+        'id', 'hash', 'name', 'created_at', 'updated_at'
     ];
 
     /**
