@@ -15,7 +15,6 @@ class CreateVaultsTable extends Migration
     {
         Schema::create('vaults', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->uuid('data_id')->nullable();
             $table->unsignedBigInteger('user_id')->nullable()->index();
             $table->string('name');
             $table->string('hash')->nullable();
