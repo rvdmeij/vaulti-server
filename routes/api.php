@@ -20,35 +20,28 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/register', 
-        [ApiAuthController::class, 'register'])
+Route::post('/register', [ApiAuthController::class, 'register'])
     ->name('account.register');
 
-Route::post('/login', 
-        [ApiAuthController::class, 'login'])
+Route::post('/login', [ApiAuthController::class, 'login'])
     ->name('account.login');
 
 Route::middleware('auth:sanctum')
-    ->get('/vaults', 
-        [VaultController::class, 'index'])
+    ->get('/vaults', [VaultController::class, 'index'])
     ->name('vaults.list');
 
 Route::middleware('auth:sanctum')
-    ->post('/vaults', 
-        [VaultController::class, 'store'])
+    ->post('/vaults', [VaultController::class, 'store'])
     ->name('vaults.store');
 
 Route::middleware('auth:sanctum')
-    ->get('/vaults/{vault}',
-        [VaultController::class, 'show'])
+    ->get('/vaults/{vault}',[VaultController::class, 'show'])
     ->name('vault.show');
 
 Route::middleware('auth:sanctum')
-    ->patch('/vaults/{vault}', 
-        [VaultController::class, 'update'])
+    ->patch('/vaults/{vault}', [VaultController::class, 'update'])
     ->name('vault.update');
 
 Route::middleware('auth:sanctum')
-    ->delete('/vaults/{vault}', 
-        [VaultController::class, 'delete'])
+    ->delete('/vaults/{vault}', [VaultController::class, 'delete'])
     ->name('vault.delete');
